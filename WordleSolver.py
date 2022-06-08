@@ -1,7 +1,7 @@
 """
 Created on 6/7/2022
 
-@author: Kevin
+@author: xuanet
 """
 
 from Wordle import WordleGame
