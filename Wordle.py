@@ -72,8 +72,9 @@ def runGame():
     """Runs the Wordle game"""
 
     whitespace = "                                                     "
-    debug = debugMode()
-    secretWord = chooseWord("valid-wordle-words.txt")
+    # debug = debugMode()
+    debug = False
+    secretWord = chooseWord("wordle-answers-alphabetical.txt")
 
     freq = createFreqDict(secretWord)
     allGuesses = []
@@ -109,7 +110,7 @@ def runGame():
 
         attemptsLeft -= 1
         countGuesses += 1
-        print("Totol guesses " + str(countGuesses))
+        print("Total guesses " + str(countGuesses))
 
     print("You lost\nThe correct word was " + secretWord)
 

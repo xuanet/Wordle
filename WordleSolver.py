@@ -11,7 +11,8 @@ class WordleSolver(WordleGame):
     def __init__(self, file):
         self.word = self.chooseWord(file)
         self.freq = self.createFreqDict(self.word)
-        self.debug = self.debugMode()
+        # self.debug = self.debugMode()
+        self.debug = False
 
         self.myCurrGuess = None
         self.myCurrGYB = None
@@ -119,8 +120,12 @@ class WordleSolver(WordleGame):
                 print("Guesses used " + str(countGuesses))
                 return True
 
+            print("here")
+
             self.modifySeachList()
             self.recommendWord()
+
+            print("now here")
 
             attemptsLeft -= 1
             countGuesses += 1
@@ -170,35 +175,39 @@ class WordleSolver(WordleGame):
 if __name__ == '__main__':
     pass
 
-playAgain = True
-wins = 0
-losses = 0
+# print("here")
 
-while playAgain == True:
-    won = WordleSolver("fiveletterwords.txt").runGame()
-    if won == True:
-        wins += 1
-    else:
-        losses += 1
-    f = input("Play again? y/n")
-    if f == 'n':
-        playAgain = False
+# playAgain = True
+# wins = 0
+# losses = 0
 
-    print("Your final score is " + str(wins) + " wins and " + str(losses) + " losses.")
+# print("now here")
 
-# d = {}
-# for i in range(1, 15):
-#     d[i] = 0
-#
-# for i in range(1000):
-#     game = WordleSolver("wordle-answers-alphabetical.txt")
-#     game.runGameSimulation()
-#     d[game.score] += 1
-#
-# print(d)
-#
-# expectedScore = 0
-# for i in range(1, 15):
-#     expectedScore += d[i]*i
-#
-# print("\nAverage score: " + str(expectedScore/1000))
+# while playAgain == True:
+#     won = WordleSolver("fiveletterwords.txt").runGame()
+#     if won == True:
+#         wins += 1
+#     else:
+#         losses += 1
+#     f = input("Play again? y/n")
+#     if f == 'n':
+#         playAgain = False
+
+#     print("Your final score is " + str(wins) + " wins and " + str(losses) + " losses.")
+
+d = {}
+for i in range(1, 15):
+    d[i] = 0
+
+for i in range(1000):
+    game = WordleSolver("wordle-answers-alphabetical.txt")
+    game.runGameSimulation()
+    d[game.score] += 1
+
+print(d)
+
+expectedScore = 0
+for i in range(1, 15):
+    expectedScore += d[i]*i
+
+print("\nAverage score: " + str(expectedScore/1000))
